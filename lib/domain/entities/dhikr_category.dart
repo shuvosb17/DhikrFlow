@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants/category_icons.dart';
+
 /// A dhikr category (e.g. SubhanAllah). Pure domain entity, framework-light.
 @immutable
 class DhikrCategory {
@@ -42,8 +44,7 @@ class DhikrCategory {
 
   Color get color => Color(colorValue);
 
-  IconData get icon =>
-      IconData(iconCodePoint, fontFamily: 'MaterialIcons');
+  IconData get icon => CategoryIcons.fromCodePoint(iconCodePoint);
 
   bool get hasTarget => dailyTarget != null && dailyTarget! > 0;
 

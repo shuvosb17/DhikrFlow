@@ -2,30 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/category_icons.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../domain/entities/dhikr_category.dart';
 import '../../providers/category_providers.dart';
-
-/// A curated set of icons users can choose for a category.
-const _iconChoices = <IconData>[
-  Icons.spa_outlined,
-  Icons.favorite_outline,
-  Icons.star_outline,
-  Icons.self_improvement_outlined,
-  Icons.brightness_low_outlined,
-  Icons.mosque_outlined,
-  Icons.nights_stay_outlined,
-  Icons.wb_sunny_outlined,
-  Icons.water_drop_outlined,
-  Icons.eco_outlined,
-  Icons.menu_book_outlined,
-  Icons.volunteer_activism_outlined,
-  Icons.light_mode_outlined,
-  Icons.bolt_outlined,
-  Icons.diamond_outlined,
-  Icons.shield_moon_outlined,
-];
 
 class CategoryFormScreen extends ConsumerStatefulWidget {
   const CategoryFormScreen({super.key, this.existing});
@@ -60,7 +41,7 @@ class _CategoryFormScreenState extends ConsumerState<CategoryFormScreen> {
     _target = TextEditingController(
         text: e?.dailyTarget != null ? '${e!.dailyTarget}' : '');
     _colorValue = e?.colorValue ?? AppColors.categoryPalette.first.toARGB32();
-    _iconCodePoint = e?.iconCodePoint ?? _iconChoices.first.codePoint;
+    _iconCodePoint = e?.iconCodePoint ?? CategoryIcons.choices.first.codePoint;
   }
 
   @override
@@ -156,7 +137,7 @@ class _CategoryFormScreenState extends ConsumerState<CategoryFormScreen> {
           children: [
             _Preview(
                 color: color,
-                icon: IconData(_iconCodePoint, fontFamily: 'MaterialIcons'),
+                icon: CategoryIcons.fromCodePoint(_iconCodePoint),
                 name: _name.text.isEmpty ? 'Dhikr name' : _name.text),
             const SizedBox(height: Gap.lg),
             TextFormField(
@@ -331,7 +312,7 @@ class _IconPicker extends StatelessWidget {
     return Wrap(
       spacing: 12,
       runSpacing: 12,
-      children: _iconChoices.map((icon) {
+      children: CategoryIcons.choices.map((icon) {
         final isSelected = icon.codePoint == selected;
         return GestureDetector(
           onTap: () => onSelected(icon.codePoint),
