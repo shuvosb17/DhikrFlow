@@ -1,4 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Flutter needs INTERNET in debug to talk to the dev tooling / VM service. -->
-    <uses-permission android:name="android.permission.INTERNET" />
-</manifest>

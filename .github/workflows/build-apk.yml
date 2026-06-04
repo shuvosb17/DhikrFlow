@@ -29,6 +29,10 @@ jobs:
       - name: Generate Android platform files
         run: flutter create . --platforms=android --org com.dhikrcounter
 
+      - name: Set app display name to DhikrFlow
+        run: |
+          sed -i 's/android:label="[^"]*"/android:label="DhikrFlow"/' android/app/src/main/AndroidManifest.xml
+
       - name: Install dependencies
         run: flutter pub get
 
