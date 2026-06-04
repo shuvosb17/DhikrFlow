@@ -89,7 +89,7 @@ class _CategoryFormScreenState extends ConsumerState<CategoryFormScreen> {
           dailyTarget: target,
           clearTarget: target == null,
         );
-        await notifier.update(updated);
+        await notifier.updateCategory(updated);
       } else {
         await notifier.create(
           name: _name.text.trim(),

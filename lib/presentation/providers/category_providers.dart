@@ -40,7 +40,7 @@ class CategoriesNotifier extends AsyncNotifier<List<DhikrCategory>> {
     return created;
   }
 
-  Future<void> update(DhikrCategory category) async {
+  Future<void> updateCategory(DhikrCategory category) async {
     final repo = ref.read(categoryRepositoryProvider);
     await repo.updateCategory(category);
     await refresh();
